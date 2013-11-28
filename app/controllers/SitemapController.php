@@ -24,7 +24,14 @@ class SitemapController extends BaseController {
         foreach ($pages as $page)
         {
             // set item's url, date, priority, freq
-            $sitemap->add(URL::to($page->slug), $page->updated_at, 'monthly', 1);
+            if ($page->slug != 'home')
+            {            
+                $sitemap->add(URL::to($page->slug), $page->updated_at, 'monthly', 1);
+            }
+            else
+            {
+                $sitemap->add(URL::to(''), $page->updated_at, 'monthly', 1);
+            }
         }
 
         foreach ($posts as $post)

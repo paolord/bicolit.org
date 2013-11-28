@@ -120,7 +120,6 @@ Route::get('contact-us', array('before' => 'detectLang','uses' => 'ContactContro
 Route::post('contact-us', array('uses' => 'ContactController@postIndex'));
 Route::get('feed', array('uses' => 'FeedController@getIndex'));
 Route::get('sitemap', array('uses' => 'SitemapController@getIndex'));
-Route::get('home', array('before' => 'detectLang','uses' => 'HomeController@getIndex'));
 
 # Posts - Second to last set, match slug
 Route::get('{postSlug}', 'BlogController@getView');
