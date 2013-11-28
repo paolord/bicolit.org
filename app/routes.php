@@ -16,7 +16,6 @@
  *  ------------------------------------------
  */
 Route::model('user', 'User');
-Route::model('comment', 'Comment');
 Route::model('post', 'Post');
 Route::model('page', 'Page');
 Route::model('role', 'Role');
@@ -27,17 +26,6 @@ Route::model('role', 'Role');
  */
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 {
-
-    # Comment Management
-    Route::get('comments/{comment}/edit', 'AdminCommentsController@getEdit')
-        ->where('comment', '[0-9]+');
-    Route::post('comments/{comment}/edit', 'AdminCommentsController@postEdit')
-        ->where('comment', '[0-9]+');
-    Route::get('comments/{comment}/delete', 'AdminCommentsController@getDelete')
-        ->where('comment', '[0-9]+');
-    Route::post('comments/{comment}/delete', 'AdminCommentsController@postDelete')
-        ->where('comment', '[0-9]+');
-    Route::controller('comments', 'AdminCommentsController');
 
     # Blog Management
     Route::get('blogs/{post}/show', 'AdminBlogsController@getShow')
@@ -123,8 +111,6 @@ Route::get('sitemap', array('uses' => 'SitemapController@getIndex'));
 
 # Posts - Second to last set, match slug
 Route::get('{postSlug}', 'BlogController@getView');
-Route::post('{postSlug}', 'BlogController@postView');
-
 
 # Index Page - Last route, no matches
 Route::get('/', array('before' => 'detectLang','uses' => 'HomeController@getIndex'));

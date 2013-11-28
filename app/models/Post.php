@@ -13,9 +13,6 @@ class Post extends Eloquent implements PresentableInterface {
 	 */
 	public function delete()
 	{
-		// Delete the comments
-		$this->comments()->delete();
-
 		// Delete the blog post
 		return parent::delete();
 	}
@@ -39,16 +36,6 @@ class Post extends Eloquent implements PresentableInterface {
 	public function author()
 	{
 		return $this->belongsTo('User', 'user_id');
-	}
-
-	/**
-	 * Get the post's comments.
-	 *
-	 * @return array
-	 */
-	public function comments()
-	{
-		return $this->hasMany('Comment');
 	}
 
     /**

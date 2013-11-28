@@ -14,20 +14,12 @@ class PermissionsTableSeeder extends Seeder {
                 'display_name' => 'manage posts'
             ],
             [
-                'name' => 'manage_comments',
-                'display_name' => 'manage comments'
-            ],
-            [
                 'name' => 'manage_users',
                 'display_name' => 'manage users'
             ],
             [
                 'name' => 'manage_roles',
                 'display_name' => 'manage roles'
-            ],
-            [
-                'name' => 'manage_pages',
-                'display_name' => 'manage pages'
             ],
             [
                 'name' => 'manage_pages',

@@ -25,7 +25,6 @@
 		<thead>
 			<tr>
 				<th class="col-md-4">{{{ Lang::get('admin/blogs/table.title') }}}</th>
-				<th class="col-md-2">{{{ Lang::get('admin/blogs/table.comments') }}}</th>
 				<th class="col-md-2">{{{ Lang::get('admin/blogs/table.created_at') }}}</th>
 				<th class="col-md-2">{{{ Lang::get('table.actions') }}}</th>
 			</tr>
