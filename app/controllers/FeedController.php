@@ -30,7 +30,7 @@ class FeedController extends BaseController {
         foreach ($posts as $post)
         {
             // set item's title, author, url, pubdate and description
-            $feed->add($post->title, $post->author->username, URL::to($post->slug), $post->created_at, Str::limit($post->content, 200));
+            $feed->add($post->title, $post->author->username, $post->url(), $post->created_at, Str::limit($post->content, 200));
         }
 
         // show your feed (options: 'atom' (recommended) or 'rss')

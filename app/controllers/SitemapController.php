@@ -26,7 +26,7 @@ class SitemapController extends BaseController {
             // set item's url, date, priority, freq
             if ($page->slug != 'home')
             {            
-                $sitemap->add(URL::to($page->slug), $page->updated_at, 'monthly', 1);
+                $sitemap->add($page->url(), $page->updated_at, 'monthly', 1);
             }
             else
             {
@@ -37,7 +37,7 @@ class SitemapController extends BaseController {
         foreach ($posts as $post)
         {
             // set item's url, date, priority, freq
-            $sitemap->add(URL::to($post->slug), $post->updated_at, 'never', 0.5);
+            $sitemap->add($post->url(), $post->updated_at, 'never', 0.5);
         }
 
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')

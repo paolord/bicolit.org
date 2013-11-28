@@ -21,6 +21,16 @@ class Page extends Eloquent implements PresentableInterface {
     }
 
 	/**
+	 * Get the URL to the page.
+	 *
+	 * @return string
+	 */
+	public function url()
+	{
+		return Url::to($this->slug);
+	}
+
+	/**
 	 * Returns the date of the page creation,
 	 * on a good and more readable format :)
 	 *
