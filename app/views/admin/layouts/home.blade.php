@@ -108,7 +108,7 @@
                                 <span class="glyphicon glyphicon-user"></span> {{{ Auth::user()->username }}}	<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-file"></span> Settings</a></li>
+                                <li><a href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-file"></span> Settings</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span> Logout</a></li>
                             </ul>
