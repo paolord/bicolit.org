@@ -38,9 +38,13 @@
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{{ asset('assets/ico/apple-touch-icon-72-precomposed.png') }}}">
 		<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
-        
+
         <!-- Atom -->
         <link href="{{{ URL::to('feed') }}}" type="application/atom+xml" rel="alternate" title="BicolIT Feed">
+
+        <!-- Facebook -->
+        <meta property="fb:app_id" content="637781242931489">
+        <meta property="fb:admins" content="1087740192">
 
 		<!-- CSS
 		================================================== -->

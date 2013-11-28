@@ -2,6 +2,16 @@
 
 {{-- Content --}}
 @section('content')
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=170290096496218";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 @foreach ($posts as $post)
 <div class="row">
 	<div class="col-md-12">
@@ -34,7 +44,7 @@
 				<p>
 					<span class="glyphicon glyphicon-user"></span> by <span class="muted">{{{ $post->author->username }}}</span>
 					| <span class="glyphicon glyphicon-time"></span> <!--Sept 16th, 2012-->{{{ $post->date() }}}
-					| <span class="glyphicon glyphicon-comment"></span> <a href="{{{ $post->url() }}}#comments">{{$post->comments()->count()}} {{ \Illuminate\Support\Pluralizer::plural('Comment', $post->comments()->count()) }}</a>
+					| <span class="glyphicon glyphicon-comment"></span> <a href="{{{ $post->url() }}}#comments"><fb:comments-count href={{ $post->url() }}></fb:comments-count> Comments</a>
 				</p>
 			</div>
 		</div>
