@@ -2,14 +2,14 @@
 
 ##Requirements
 
-	PHP >= 5.4.0 (Entrust requires 5.4, this is an increase over Laravel's 5.3.7 requirement)
-	MCrypt PHP Extension
+    PHP >= 5.4.0 (Entrust requires 5.4, this is an increase over Laravel's 5.3.7 requirement)
+    MCrypt PHP Extension
 
 ##How to install
 ### Step 1: Get the code
 #### Option 1: Git Clone
 
-	git clone git@github.com:bicolIT/bicolit.org.git
+    git clone git@github.com:bicolIT/bicolit.org.git
 
 #### Option 2: Download the repository
 
@@ -19,12 +19,12 @@
 #### Option 1: Composer is not installed globally
 
     cd laravel
-	curl -s http://getcomposer.org/installer | php
-	php composer.phar install --dev
+    curl -s http://getcomposer.org/installer | php
+    php composer.phar install --dev
 #### Option 2: Composer is installed globally
 
     cd laravel
-	composer install --dev
+    composer install --dev
 
 ### Step 3: Configure Environments
 
@@ -55,9 +55,9 @@ You will now be copying the initial configuration file inside this folder before
         'key' => 'YourSecretKey!!!',
 
         'providers' => array(
-        
+
         [... Removed ...]
-        
+
         /* Uncomment for use in development */
     //     'Way\Generators\GeneratorsServiceProvider', // Generators
     //     'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // IDE Helpers
@@ -78,8 +78,8 @@ If you don't set that registration will fail because it cannot send the confirma
 ### Step 6: Populate Database
 Run these commands to create and populate Users table:
 
-	php artisan migrate
-	php artisan db:seed
+    php artisan migrate
+    php artisan db:seed
 
 ### Step 7: Set Encryption Key
 ***In app/config/app.php***
@@ -97,7 +97,7 @@ Run these commands to create and populate Users table:
 */
 ```
 
-	'key' => 'YourSecretKey!!!',
+    'key' => 'YourSecretKey!!!',
 
 You can use artisan to do this
 
@@ -189,10 +189,10 @@ This adds the generators and ide helpers.
 To make it build the ide helpers automatically you'll want to modify the post-update-cmd in `composer.json`
 
 ```
-		"post-update-cmd": [
-			"php artisan ide-helper:generate",
-			"php artisan optimize"
-		]
+        "post-update-cmd": [
+            "php artisan ide-helper:generate",
+            "php artisan optimize"
+        ]
 ```
 
 ### Production Launch
