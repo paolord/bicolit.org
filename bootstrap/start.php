@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-    'local' => array('lorz'), // Change this to your local machine hostname.
+    'local' => array('lorz', 'JOHNs-MacBook-Pro.local'), // Change this to your local machine hostname.
     'staging' => array('bicolit.gopagoda.com'),
     'production' => array('1.web1.bicolit.pagodabox.com'),
 
