@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-
+        <meta charset="utf-8" />
         <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-        <title>
-            @section('title')
-                Administration
-            @show
-        </title>
-
-        <meta name="keywords" content="@yield('meta_keywords', 'Keywords')" />
-        <meta name="author" content="@yield('meta_author', 'Author')" />
+		<title>
+			@section('title')
+			{{ Config::get('app.default_title') }}
+			@show
+		</title>
+        <meta name="keywords" content="@yield('meta_keywords', Config::get('app.default_keywords'))" />
+        <meta name="author" content="@yield('meta_author', Config::get('app.default_author'))" />
         <!-- Google will often use this as its description of your page/site. Make it good. -->
-        <meta name="description" content="@yield('meta_description', 'Description')" />
-
-        <!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
-        <meta name="google-site-verification" content="">
+        <meta name="description" content="@yield('meta_description', Config::get('app.default_description'))" />
 
         <!-- Dublin Core Metadata : http://dublincore.org/ -->
-        <meta name="DC.title" content="@yield('meta_title', 'Project')">
-        <meta name="DC.subject" content="@yield('meta_description', 'Description')">
-        <meta name="DC.creator" content="@yield('meta_author', 'Author')">
+        <meta name="DC.title" content="@yield('meta_title', Config::get('app.default_title'))">
+        <meta name="DC.subject" content="@yield('meta_description', Config::get('app.default_description'))">
+        <meta name="DC.creator" content="@yield('meta_author', Config::get('app.default_author'))">
 
         <!--  Mobile Viewport Fix -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">

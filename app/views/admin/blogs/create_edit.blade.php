@@ -80,7 +80,7 @@
 		<!-- Form Actions -->
 		<div class="form-group">
 			<div class="col-md-12">
-				<button class="btn btn-default btn-small btn-inverse close_popup">Cancel</button>
+				<button class="btn btn-default close_popup">Cancel</button>
 				<button type="reset" class="btn btn-default">Reset</button>
 				<button type="submit" class="btn btn-success">Update</button><img id="loading" style="display:none;" src="{{{ asset('assets/img/colorbox/loading.gif') }}}">
 			</div>
