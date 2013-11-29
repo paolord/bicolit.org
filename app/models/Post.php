@@ -18,17 +18,6 @@ class Post extends Eloquent implements PresentableInterface {
 	}
 
 	/**
-	 * Returns a formatted post content entry,
-	 * this ensures that line breaks are returned.
-	 *
-	 * @return string
-	 */
-	public function content()
-	{
-		return nl2br($this->content);
-	}
-
-	/**
 	 * Get the post's author.
 	 *
 	 * @return User

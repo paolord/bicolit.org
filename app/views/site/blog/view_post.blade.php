@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<p>{{ $post->content() }}</p>
+<p>{{ $post->content }}</p>
 
 <div>
 	<span class="badge badge-info">Posted {{{ $post->date() }}}</span>
