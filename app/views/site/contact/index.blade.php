@@ -44,37 +44,53 @@
                 <form class="form-horizontal" method="POST" action="{{ URL::to('contact-us') }}" accept-charset="UTF-8">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <fieldset>
-                        <div class="form-group {{{ $errors->has('name') ? 'error' : '' }}}">
+                        <div class="form-group {{{ $errors->has('name') ? 'has-error' : '' }}}">
                             <label class="col-md-2 control-label" for="name">{{ Lang::get('general.name') }}</label>
                             <div class="col-md-6">
                                 <input class="form-control" tabindex="1" placeholder="{{Lang::get('general.name') }}" type="text" name="name" id="name" value="{{ Input::old('name') }}">
-                                {{{ $errors->first('name', ':message') }}}
+
+                                @if($errors->has('name'))
+                                    <p class="alert alert-danger">{{{ $errors->first('name', ':message') }}}</p>
+                                @endif
+
                             </div>
                         </div>
-                        <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
+                        <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
                             <label class="col-md-2 control-label" for="email">{{ Lang::get('general.email') }}</label>
                             <div class="col-md-6">
                                 <input class="form-control" tabindex="1" placeholder="{{Lang::get('general.email') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
-                                {{{ $errors->first('email', ':message') }}}
+
+                                @if($errors->has('email'))
+                                    <p class="alert alert-danger">{{{ $errors->first('email', ':message') }}}</p>
+                                @endif
+
                             </div>
                         </div>
-                        <div class="form-group {{{ $errors->has('message') ? 'error' : '' }}}">
+                        <div class="form-group {{{ $errors->has('message') ? 'has-error' : '' }}}">
                             <label class="col-md-2 control-label" for="message">
                                 {{ Lang::get('general.message') }}
                             </label>
                             <div class="col-md-10">
                                 <textarea class="form-control full-width" name="message" id="message" value="message" rows="10">{{{ Input::old('message') }}}</textarea>
-                                {{{ $errors->first('message', ':message') }}}
+
+                                @if($errors->has('message'))
+                                    <p class="alert alert-danger">{{{ $errors->first('message', ':message') }}}</p>
+                                @endif
+
                             </div>
                         </div>
-                        <div class="form-group {{{ $errors->has('recaptcha_response_field') ? 'error' : '' }}}">
+                        <div class="form-group {{{ $errors->has('recaptcha_response_field') ? 'has-error' : '' }}}">
                             <label class="col-md-2 control-label" for="message">
                                 {{ Lang::get('general.recaptcha') }}
                             </label>
                             <div class="col-md-10">
                                 {{ Form::captcha(array('theme' => 'clean')); }}
-                                {{{ $errors->first('recaptcha_response_field', ':message') }}}
-                            </div>   
+
+                                @if($errors->has('recaptcha_response_field'))
+                                    <p class="alert alert-danger">{{{ $errors->first('recaptcha_response_field', ':message') }}}</p>
+                                @endif
+
+                            </div>
                         </div>
 
                         <div class="form-group">
