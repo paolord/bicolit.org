@@ -20,21 +20,29 @@
 			<!-- General tab -->
 			<div class="tab-pane active" id="tab-general">
 				<!-- Title -->
-				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
+				<div class="form-group {{{ $errors->has('title') ? 'has-error' : '' }}}">
                     <div class="col-md-12">
                         <label class="control-label" for="title"> Title</label>
 						<input class="form-control" type="text" name="title" id="title" value="{{{ Input::old('title', isset($page) ? $page->title : null) }}}" />
-						{{{ $errors->first('title', ':message') }}}
+
+						@if($errors->has('title'))
+							<p class="alert alert-danger">{{{ $errors->first('title', ':message') }}}</p>
+						@endif
+
 					</div>
 				</div>
 				<!-- ./ title -->
 
 				<!-- Content -->
-				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
+				<div class="form-group {{{ $errors->has('content') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="content">Content</label>
 						<textarea class="form-control full-width ckeditor" name="content" value="content" rows="10">{{{ Input::old('content', isset($page) ? $page->content : null) }}}</textarea>
-						{{{ $errors->first('content', ':message') }}}
+
+						@if($errors->has('content'))
+							<p class="alert alert-danger">{{{ $errors->first('content', ':message') }}}</p>
+						@endif
+
 					</div>
 				</div>
 				<!-- ./ content -->
@@ -44,31 +52,43 @@
 			<!-- Meta Data tab -->
 			<div class="tab-pane" id="tab-meta-data">
 				<!-- Meta Title -->
-				<div class="form-group {{{ $errors->has('meta-title') ? 'error' : '' }}}">
+				<div class="form-group {{{ $errors->has('meta-title') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="meta-title">Meta Title</label>
 						<input class="form-control" type="text" name="meta-title" id="meta-title" value="{{{ Input::old('meta-title', isset($page) ? $page->meta_title : null) }}}" />
-						{{{ $errors->first('meta-title', '<:message') }}}
+
+						@if($errors->has('meta-title'))
+							<p class="alert alert-danger">{{{ $errors->first('meta-title', ':message') }}}</p>
+						@endif
+
 					</div>
 				</div>
 				<!-- ./ meta title -->
 
 				<!-- Meta Description -->
-				<div class="form-group {{{ $errors->has('meta-description') ? 'error' : '' }}}">
+				<div class="form-group {{{ $errors->has('meta-description') ? 'has-error' : '' }}}">
 					<div class="col-md-12 controls">
                         <label class="control-label" for="meta-description">Meta Description</label>
 						<input class="form-control" type="text" name="meta-description" id="meta-description" value="{{{ Input::old('meta-description', isset($page) ? $page->meta_description : null) }}}" />
-						{{{ $errors->first('meta-description', ':message') }}}
+
+						@if($errors->has('meta-description'))
+							<p class="alert alert-danger">{{{ $errors->first('meta-description', ':message') }}}</p>
+						@endif
+
 					</div>
 				</div>
 				<!-- ./ meta description -->
 
 				<!-- Meta Keywords -->
-				<div class="form-group {{{ $errors->has('meta-keywords') ? 'error' : '' }}}">
+				<div class="form-group {{{ $errors->has('meta-keywords') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="meta-keywords">Meta Keywords</label>
 						<input class="form-control" type="text" name="meta-keywords" id="meta-keywords" value="{{{ Input::old('meta-keywords', isset($page) ? $page->meta_keywords : null) }}}" />
-						{{{ $errors->first('meta-keywords', ':message') }}}
+
+						@if($errors->has('meta-keywords'))
+							<p class="alert alert-danger">{{{ $errors->first('meta-keywords', ':message') }}}</p>
+						@endif
+
 					</div>
 				</div>
 				<!-- ./ meta keywords -->
