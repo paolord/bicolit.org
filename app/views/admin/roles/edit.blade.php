@@ -20,11 +20,15 @@
 			<!-- General tab -->
 			<div class="tab-pane active" id="tab-general">
 				<!-- Name -->
-				<div class="form-group {{{ $errors->has('name') ? 'error' : '' }}}">
+				<div class="form-group {{{ $errors->has('name') ? 'has-error' : '' }}}">
 					<label class="col-md-2 control-label" for="name">Name</label>
 					<div class="col-md-10">
 						<input class="form-control" type="text" name="name" id="name" value="{{{ Input::old('name', $role->name) }}}" />
-						{{{ $errors->first('name', '<span class="help-inline">:message</span>') }}}
+
+						@if($errors->has('name'))
+							<p class="alert alert-danger">{{{ $errors->first('name', ':message') }}}</p>
+						@endif
+
 					</div>
 				</div>
 				<!-- ./ name -->
