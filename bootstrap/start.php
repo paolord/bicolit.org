@@ -27,8 +27,8 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
     'local' => array('lorz'),
-    'staging' => array('bicol-it.gopagoda.com'),
-    'production' => array('bicol-it.gopagoda.com'),
+    'staging' => array('staging'),
+    'production' => array('1.web1.bicol-it.pagodabox.com'),
 
 ));
 
