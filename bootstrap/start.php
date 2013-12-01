@@ -26,9 +26,9 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-    'local' => array(gethostname()), // Change this to your local machine hostname.
-    'staging' => array('bicolit.gopagoda.com'),
-    'production' => array('1.web1.bicolit.pagodabox.com'),
+    'local' => array(gethostname()),
+    'staging' => array('http://bicol-it.gopagoda.com'),
+    'production' => array('http://bicol-it.gopagoda.com'),
 
 ));
 
