@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{{ $title }}} :: @parent
+{{{ $title }}}
 @stop
 
 @section('keywords')Blogs administration @stop

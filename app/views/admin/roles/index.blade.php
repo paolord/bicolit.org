@@ -2,14 +2,14 @@
 
 {{-- Web site Title --}}
 @section('title')
-	{{{ $title }}} :: @parent
+{{{ $title }}}
 @stop
 
 {{-- Content --}}
 @section('content')
 	<div class="page-header">
 		<h3>
-			Role Management
+			{{{ $title }}}
 
 			<div class="pull-right">
 				<a href="{{{ URL::to('admin/roles/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>

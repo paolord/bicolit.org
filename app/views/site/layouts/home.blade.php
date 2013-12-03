@@ -4,11 +4,7 @@
 		<!-- Basic Page Needs
 		================================================== -->
 		<meta charset="utf-8" />
-		<title>
-			@section('title')
-			{{ Config::get('app.default_title') }}
-			@show
-		</title>
+		<title>@yield('title')</title>
         <meta name="keywords" content="@yield('meta_keywords', Config::get('app.default_keywords'))" />
         <meta name="author" content="@yield('meta_author', Config::get('app.default_author'))" />
         <!-- Google will often use this as its description of your page/site. Make it good. -->
@@ -40,7 +36,7 @@
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 
         <!-- Atom -->
-        <link rel="alternate" type="application/atom+xml" title="BicolIT Feed" href="{{{ URL::to('feed') }}}">
+        <link href="{{{ URL::to('feed') }}}" type="application/atom+xml" rel="alternate" title="BicolIT Feed">
 
 		<!-- CSS
 		================================================== -->

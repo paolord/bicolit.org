@@ -2,23 +2,22 @@
 
 {{-- Web site Title --}}
 @section('title')
-    {{{ String::title($post->title) }}} ::
-    @parent
+{{{ String::title($post->title) }}} :: @parent
 @stop
 
 {{-- Update the Meta Title --}}
 @section('meta_title')
-    {{{ String::title($post->meta_title) }}} ::
+{{{ String::title($post->meta_title) }}}
 @stop
 
 {{-- Update the Meta Description --}}
 @section('meta_description')
-    {{{ String::title($post->meta_description) }}}
+{{{ String::title($post->meta_description) }}}
 @stop
 
 {{-- Update the Meta Keywords --}}
-    @section('meta_keywords')
-    {{{ String::title($post->meta_keywords) }}}
+@section('meta_keywords')
+{{{ String::title($post->meta_keywords) }}}
 @stop
 
 {{-- Content --}}

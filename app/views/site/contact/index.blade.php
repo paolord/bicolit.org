@@ -2,13 +2,12 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{{ String::title($page->title) }}} ::
-@parent
+{{{ String::title($page->title) }}}
 @stop
 
 {{-- Update the Meta Title --}}
 @section('meta_title')
-{{{ String::title($page->meta_title) }}} ::
+{{{ String::title($page->meta_title) }}}
 @stop
 
 {{-- Update the Meta Description --}}
