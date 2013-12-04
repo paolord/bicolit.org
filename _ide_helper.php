@@ -11272,4 +11272,3 @@ class Feed extends Roumen\Feed\Facades\Feed{
 	 }
 
 }
-
