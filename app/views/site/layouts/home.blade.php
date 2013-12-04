@@ -46,10 +46,10 @@
         body {
             padding: 60px 0;
         }
-        
+
 		@section('styles')
 		@show
-		</style>        
+		</style>
 	</head>
 
 	<body>

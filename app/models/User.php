@@ -7,6 +7,19 @@ use Zizaco\Entrust\HasRole;
 use Robbo\Presenter\PresentableInterface;
 use Carbon\Carbon;
 
+/**
+ * An Eloquent Model: 'User'
+ *
+ * @property integer $id
+ * @property string $username
+ * @property string $email
+ * @property string $password
+ * @property string $confirmation_code
+ * @property boolean $confirmed
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Role[] $roles
+ */
 class User extends ConfideUser implements PresentableInterface {
     use HasRole;
 

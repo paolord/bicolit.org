@@ -32,7 +32,6 @@
 	},
 	"autoload": {
 		"classmap": [
-
 			"app/commands",
 			"app/controllers",
             "app/library",
@@ -43,7 +42,7 @@
 			"app/tests/library"
 		]
 	},
-	"scripts": {      
+	"scripts": {
 		"post-install-cmd": [
 			"php artisan optimize"
 		],

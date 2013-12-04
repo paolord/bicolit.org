@@ -8,7 +8,7 @@
         <meta name="keywords" content="@yield('meta_keywords', Config::get('app.default_keywords'))" />
         <meta name="author" content="@yield('meta_author', Config::get('app.default_author'))" />
         <!-- Google will often use this as its description of your page/site. Make it good. -->
-        <meta name="description" content="@yield('meta_description', Config::get('app/default_description'))" />
+        <meta name="description" content="@yield('meta_description', Config::get('app.default_description'))" />
 
         <!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
         <meta name="google-site-verification" content="">
@@ -50,10 +50,10 @@
         body {
             padding: 60px 0;
         }
-        
+
 		@section('styles')
 		@show
-		</style>        
+		</style>
 	</head>
 
 	<body>

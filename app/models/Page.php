@@ -3,6 +3,19 @@
 use Illuminate\Support\Facades\URL; # not sure why i need this here :c
 use Robbo\Presenter\PresentableInterface;
 
+/**
+ * An Eloquent Model: 'Page'
+ *
+ * @property integer $id
+ * @property string $title
+ * @property string $slug
+ * @property string $content
+ * @property string $meta_title
+ * @property string $meta_description
+ * @property string $meta_keywords
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
 class Page extends Eloquent implements PresentableInterface {
 
     /**

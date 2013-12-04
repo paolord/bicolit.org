@@ -2,6 +2,14 @@
 
 use Zizaco\Entrust\EntrustPermission;
 
+/**
+ * An Eloquent Model: 'Permission'
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $display_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Role[] $roles
+ */
 class Permission extends EntrustPermission
 {
     public $timestamps = false;
