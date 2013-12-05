@@ -7,7 +7,7 @@ class DatabaseSeeder extends Seeder {
         Eloquent::unguard();
 
         //Allow delete of tables with foreign key constraints
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         // Add calls to Seeders here
         $this->call('UsersTableSeeder');
