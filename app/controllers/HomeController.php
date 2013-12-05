@@ -6,7 +6,7 @@ class HomeController extends BaseController {
      * Page Model
      * @var Page
      */
-    protected $post;
+    protected $page;
 
     /**
      * Inject the models.
@@ -18,7 +18,7 @@ class HomeController extends BaseController {
 
         $this->page = $page;
     }
-    
+
 	/**
 	 * View home.
 	 *
@@ -27,7 +27,7 @@ class HomeController extends BaseController {
 	public function getIndex()
 	{
         $page = $this->page->where('slug', '=', 'home')->first();
-        
+
 		// Show the page
 		return View::make('site/home/index', compact('page'));
 	}

@@ -83,7 +83,7 @@ class AdminPagesController extends AdminController {
         // Check if the form validates with success
         if ($validator->passes())
         {
-            // Update the page post data
+            // Update the page  data
             $post->title            = Input::get('title');
             $post->content          = Input::get('content');
             $post->meta_title       = Input::get('meta-title');
@@ -97,7 +97,7 @@ class AdminPagesController extends AdminController {
                 return Redirect::to('admin/pages/' . $post->id . '/edit')->with('success', Lang::get('admin/pages/messages.update.success'));
             }
 
-            // Redirect to the pages post management page
+            // Redirect to the page management page
             return Redirect::to('admin/pages/' . $post->id . '/edit')->with('error', Lang::get('admin/pages/messages.update.error'));
         }
 

@@ -6,7 +6,7 @@ class ContactController extends BaseController {
      * Page Model
      * @var Page
      */
-    protected $post;
+    protected $page;
 
     /**
      * Inject the models.
@@ -18,7 +18,7 @@ class ContactController extends BaseController {
 
         $this->page = $page;
     }
-    
+
 	/**
 	 * View home.
 	 *
@@ -27,7 +27,7 @@ class ContactController extends BaseController {
 	public function getIndex()
 	{
         $page = $this->page->where('slug', '=', 'contact-us')->first();
-        
+
 		// Show the page
 		return View::make('site/contact/index', compact('page'));
 	}

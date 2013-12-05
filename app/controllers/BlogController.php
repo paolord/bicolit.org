@@ -26,7 +26,7 @@ class BlogController extends BaseController {
         $this->post = $post;
         $this->user = $user;
     }
-    
+
 	/**
 	 * Returns all the blog posts.
 	 *
