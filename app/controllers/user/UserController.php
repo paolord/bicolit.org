@@ -38,9 +38,16 @@ class UserController extends BaseController {
      */
     public function postEdit($user)
     {
+        $rules = array(
+            'username' => 'required|alpha_dash',
+            'email' => 'required|email',
+            'password' => 'between:4,11',
+            'password_confirmation' => 'between:4,11',
+        );
+
         // Validate the inputs
         $validator = Validator::make(Input::all(), $user->getUpdateRules());
-
+       //$validator = Validator::make(Input::all(), $rules);
 
         if ($validator->passes())
         {
@@ -71,19 +78,22 @@ class UserController extends BaseController {
 
             // Save if valid. Password field will be hashed before save
             $user->amend();
+
+            // Get validation errors (see Ardent package)
+            $error = $user->errors()->all();
+
+            if(empty($error)) {
+                return Redirect::to('user')
+                    ->with( 'success', Lang::get('user/user.user_account_updated') );
+            } else {
+                return Redirect::to('user')
+                    ->withInput(Input::except('password','password_confirmation'))
+                    ->with( 'error', $error );
+            }
+
         }
 
-        // Get validation errors (see Ardent package)
-        $error = $user->errors()->all();
-
-        if(empty($error)) {
-            return Redirect::to('user')
-                ->with( 'success', Lang::get('user/user.user_account_updated') );
-        } else {
-            return Redirect::to('user')
-                ->withInput(Input::except('password','password_confirmation'))
-                ->with( 'error', $error );
-        }
+        return Redirect::to('user')->withErrors($validator);
     }
 
     /**

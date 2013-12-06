@@ -25,41 +25,53 @@ body {
     <!-- General tab -->
     <div class="tab-pane active" id="tab-general">
         <!-- username -->
-        <div class="form-group {{{ $errors->has('username') ? 'error' : '' }}}">
+        <div class="form-group {{{ $errors->has('username') ? 'has-error' : '' }}}">
             <label class="col-md-2 control-label" for="username">Username</label>
             <div class="col-md-10">
                 <input class="form-control" type="text" name="username" id="username" value="{{{ Input::old('username', $user->username) }}}" />
-                {{{ $errors->first('username', '<span class="help-inline">:message</span>') }}}
+
+                @if($errors->has('username'))
+                    <p class="alert alert-danger">{{{ $errors->first('username', ':message') }}}</p>
+                @endif
             </div>
         </div>
         <!-- ./ username -->
 
         <!-- Email -->
-        <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
+        <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
             <label class="col-md-2 control-label" for="email">Email</label>
             <div class="col-md-10">
                 <input class="form-control" type="text" name="email" id="email" value="{{{ Input::old('email', $user->email) }}}" />
-                {{{ $errors->first('email', '<span class="help-inline">:message</span>') }}}
+
+                @if($errors->has('email'))
+                    <p class="alert alert-danger">{{{ $errors->first('email', ':message') }}}</p>
+                @endif
             </div>
         </div>
         <!-- ./ email -->
 
         <!-- Password -->
-        <div class="form-group {{{ $errors->has('password') ? 'error' : '' }}}">
+        <div class="form-group {{{ $errors->has('password') ? 'has-error' : '' }}}">
             <label class="col-md-2 control-label" for="password">Password</label>
             <div class="col-md-10">
                 <input class="form-control" type="password" name="password" id="password" value="" />
-                {{{ $errors->first('password', '<span class="help-inline">:message</span>') }}}
+
+                @if($errors->has('password'))
+                    <p class="alert alert-danger">{{{ $errors->first('password', ':message') }}}</p>
+                @endif
             </div>
         </div>
         <!-- ./ password -->
 
         <!-- Password Confirm -->
-        <div class="form-group {{{ $errors->has('password_confirmation') ? 'error' : '' }}}">
+        <div class="form-group {{{ $errors->has('password_confirmation') ? 'has-error' : '' }}}">
             <label class="col-md-2 control-label" for="password_confirmation">Password Confirm</label>
             <div class="col-md-10">
                 <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" value="" />
-                {{{ $errors->first('password_confirmation', '<span class="help-inline">:message</span>') }}}
+
+                @if($errors->has('password_confirmation'))
+                    <p class="alert alert-danger">{{{ $errors->first('password_confirmation', ':message') }}}</p>
+                @endif
             </div>
         </div>
         <!-- ./ password confirm -->
