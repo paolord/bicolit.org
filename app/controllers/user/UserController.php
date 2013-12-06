@@ -38,16 +38,8 @@ class UserController extends BaseController {
      */
     public function postEdit($user)
     {
-        $rules = array(
-            'username' => 'required|alpha_dash',
-            'email' => 'required|email',
-            'password' => 'between:4,11',
-            'password_confirmation' => 'between:4,11',
-        );
-
         // Validate the inputs
         $validator = Validator::make(Input::all(), $user->getUpdateRules());
-       //$validator = Validator::make(Input::all(), $rules);
 
         if ($validator->passes())
         {
