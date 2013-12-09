@@ -39,10 +39,10 @@ class AdminPagesController extends AdminController {
     /**
      * Display the specified resource.
      *
-     * @param $post
+     * @param $page
      * @return Response
      */
-	public function getShow($post)
+	public function getShow($page)
 	{
         // redirect to the frontend
 	}
@@ -50,7 +50,7 @@ class AdminPagesController extends AdminController {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param $post
+     * @param $page
      * @return Response
      */
 	public function getEdit($page)
@@ -65,44 +65,26 @@ class AdminPagesController extends AdminController {
     /**
      * Update the specified resource in storage.
      *
-     * @param $post
+     * @param $page
      * @return Response
      */
-	public function postEdit($post)
+	public function postEdit($page)
 	{
+        // Update the page  data
+        $page->title            = Input::get('title');
+        $page->content          = Input::get('content');
+        $page->meta_title       = Input::get('meta-title');
+        $page->meta_description = Input::get('meta-description');
+        $page->meta_keywords    = Input::get('meta-keywords');
 
-        // Declare the rules for the form validation
-        $rules = array(
-            'title'   => 'required|min:3',
-            'content' => 'required|min:3'
-        );
-
-        // Validate the inputs
-        $validator = Validator::make(Input::all(), $rules);
-
-        // Check if the form validates with success
-        if ($validator->passes())
+        // Was the page post updated?
+        if($page->save())
         {
-            // Update the page  data
-            $post->title            = Input::get('title');
-            $post->content          = Input::get('content');
-            $post->meta_title       = Input::get('meta-title');
-            $post->meta_description = Input::get('meta-description');
-            $post->meta_keywords    = Input::get('meta-keywords');
-
-            // Was the page post updated?
-            if($post->save())
-            {
-                // Redirect to the new page page
-                return Redirect::to('admin/pages/' . $post->id . '/edit')->with('success', Lang::get('admin/pages/messages.update.success'));
-            }
-
-            // Redirect to the page management page
-            return Redirect::to('admin/pages/' . $post->id . '/edit')->with('error', Lang::get('admin/pages/messages.update.error'));
+            // Redirect to the new page page
+            return Redirect::to('admin/pages/' . $page->id . '/edit')->with('success', Lang::get('admin/pages/messages.update.success'));
         }
 
-        // Form validation failed
-        return Redirect::to('admin/pages/' . $post->id . '/edit')->withInput()->withErrors($validator);
+        return Redirect::to('admin/pages/' . $page->id . '/edit')->with('error', Lang::get('admin/pages/messages.update.error'))->withInput()->withErrors($page->errors());
 	}
 
     /**

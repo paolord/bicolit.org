@@ -16,7 +16,12 @@ use Robbo\Presenter\PresentableInterface;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Page extends Eloquent implements PresentableInterface {
+class Page extends \LaravelBook\Ardent\Ardent implements PresentableInterface {
+
+    public static $rules = array(
+        'title'   => 'required|min:3',
+        'content' => 'required|min:3'
+    );
 
     /**
      * Get the date the page was created.

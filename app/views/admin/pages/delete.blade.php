@@ -11,7 +11,7 @@
     <form class="form-horizontal" method="post" action="" autocomplete="off">
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-        <input type="hidden" name="id" value="{{ $post->id }}" />
+        <input type="hidden" name="id" value="{{ $page->id }}" />
         <!-- ./ csrf token -->
 
         <!-- Form Actions -->

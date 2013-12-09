@@ -18,7 +18,12 @@ use Robbo\Presenter\PresentableInterface;
  * @property \Carbon\Carbon $updated_at
  * @property-read \User $author
  */
-class Post extends Eloquent implements PresentableInterface {
+class Post extends \LaravelBook\Ardent\Ardent implements PresentableInterface {
+
+    public static $rules = array(
+        'title'   => 'required|min:3',
+        'content' => 'required|min:3'
+    );
 
 	/**
 	 * Deletes a blog post and all
