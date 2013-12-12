@@ -102,7 +102,7 @@
 			<div class="col-md-12">
 				<button class="btn btn-default btn-small btn-inverse close_popup">Cancel</button>
 				<button type="reset" class="btn btn-default">Reset</button>
-				<button type="submit" class="btn btn-primary">Update</button>
+				<button type="submit" class="btn btn-success">Update</button>
 			</div>
 		</div>
 		<!-- ./ form actions -->
