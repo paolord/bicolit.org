@@ -56,7 +56,7 @@ return array(
             $collection->directory('assets/js', function($collection)
             {
                 $collection->javascript('http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js');
-                $collection->add('bootstrap.min.js');  
+                $collection->add('bootstrap.min.js');
                 $collection->javascript('http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js');
                 $collection->javascript('http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js');
                 $collection->add('datatables-bootstrap.js');
