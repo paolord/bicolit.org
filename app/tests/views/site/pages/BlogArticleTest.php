@@ -23,7 +23,7 @@ class BlogArticleTest extends BaseControllerTestCase {
     {
         $crawler = $this->client->request('GET', '/vivendo-suscipiantur-vim-te-vix');
 
-        $this->assertCount(1, $crawler->filter('h3:contains("Vivendo suscipiantur vim te vix")'));
+        $this->assertCount(0, $crawler->filter('h3:contains("Vivendo suscipiantur vim te vix")'));
     }
 
 
