@@ -9,6 +9,8 @@ web1:
   apache_error_log: true
   php_error_log: true
   php_fpm_log: true
+  php_session_save_handler: redis
+  php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
   shared_writable_dirs:
     - /app/storage/cache
     - /app/storage/logs
@@ -21,7 +23,7 @@ web1:
     - mbstring
     - pdo_mysql
     - mcrypt
-    - memcached
+    - redis
   after_build:
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-source"
   before_deploy:
@@ -39,8 +41,7 @@ web1:
 cache2:
   type: memcached
 cache3:
-  name: bicolit
-  type: memcached
+  type: redis
 db1:
   name: bicolit
   type: mysql
