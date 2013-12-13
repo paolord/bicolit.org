@@ -5,6 +5,10 @@ web1:
   document_root: public/
   php_version: 5.4.14
   name: bicolit
+  apache_access_log: false
+  apache_error_log: true
+  php_error_log: true
+  php_fpm_log: true
   shared_writable_dirs:
     - /app/storage/cache
     - /app/storage/logs
