@@ -38,6 +38,9 @@ web1:
     - "php artisan basset:build -p admin"
 cache2:
   type: memcached
+cache3:
+  name: bicolit
+  type: memcached
 db1:
   name: bicolit
   type: mysql
