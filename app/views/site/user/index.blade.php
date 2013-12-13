@@ -9,14 +9,14 @@
 @section('styles')
 @parent
 body {
-	background: #f2f2f2;
+    background: #f2f2f2;
 }
 @stop
 
 {{-- Content --}}
 @section('content')
 <div class="page-header">
-	<h3>Edit your settings</h3>
+    <h3>Edit your settings</h3>
 </div>
 <form class="form-horizontal" method="post" action="{{ URL::to('user/' . $user->id . '/edit') }}"  autocomplete="off">
     <!-- CSRF Token -->

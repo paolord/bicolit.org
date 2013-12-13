@@ -68,5 +68,4 @@ class BlogTest extends BaseControllerTestCase {
 
         $this->assertEqualsUrlPath($url, 'lorem-ipsum-dolor-sit-amet');
     }
-
 }

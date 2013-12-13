@@ -23,25 +23,25 @@
 {{-- Content --}}
 @section('content')
 <div class="row">
-	<div class="col-md-12">
-		<!-- Page Title -->
-		<div class="row">
-			<div class="col-md-12">
-				<h4><strong>{{ String::title($page->title) }}</strong></h4>
-			</div>
-		</div>
-		<!-- ./ page title -->
+    <div class="col-md-12">
+        <!-- Page Title -->
+        <div class="row">
+            <div class="col-md-12">
+                <h4><strong>{{ String::title($page->title) }}</strong></h4>
+            </div>
+        </div>
+        <!-- ./ page title -->
 
-		<!-- Page Content -->
-		<div class="row">
-			<div class="col-md-12">
-				<p>
-					{{ String::tidy($page->content) }}
-				</p>
-			</div>
-		</div>
-		<!-- ./ page content -->
-	</div>
+        <!-- Page Content -->
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    {{ String::tidy($page->content) }}
+                </p>
+            </div>
+        </div>
+        <!-- ./ page content -->
+    </div>
 </div>
 
 <hr />

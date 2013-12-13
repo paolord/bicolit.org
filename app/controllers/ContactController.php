@@ -1,5 +1,7 @@
 <?php
 
+use App\Storage\Page\PageEloquentRepository as Page;
+
 class ContactController extends BaseController {
 
     /**
@@ -19,21 +21,21 @@ class ContactController extends BaseController {
         $this->page = $page;
     }
 
-	/**
-	 * View home.
-	 *
-	 * @return View
-	 */
-	public function getIndex()
-	{
-        $page = $this->page->where('slug', '=', 'contact-us')->first();
+    /**
+     * View home.
+     *
+     * @return View
+     */
+    public function getIndex()
+    {
+        $page = $this->page->where('slug', '=', 'contact-us');
 
-		// Show the page
-		return View::make('site/contact/index', compact('page'));
-	}
+        // Show the page
+        return View::make('site/contact/index', compact('page'));
+    }
 
-	public function postIndex()
-	{
+    public function postIndex()
+    {
         // Declare the rules for the form validation
         $rules = array(
             'name' => 'required',
@@ -67,5 +69,5 @@ class ContactController extends BaseController {
 
         // Form validation failed
         return Redirect::to('contact-us')->withInput()->withErrors($validator);
-	}
+    }
 }

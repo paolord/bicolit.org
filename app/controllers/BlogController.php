@@ -1,5 +1,7 @@
 <?php
 
+use App\Storage\Post\PostEloquentRepository as Post;
+
 class BlogController extends BaseController {
 
     /**
@@ -27,44 +29,44 @@ class BlogController extends BaseController {
         $this->user = $user;
     }
 
-	/**
-	 * Returns all the blog posts.
-	 *
-	 * @return View
-	 */
-	public function getIndex()
-	{
-		// Get all the blog posts
-		$posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
+    /**
+     * Returns all the blog posts.
+     *
+     * @return View
+     */
+    public function getIndex()
+    {
+        // Get all the blog posts
+        $posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
 
-		// Show the page
-		return View::make('site/blog/index', compact('posts'));
-	}
+        // Show the page
+        return View::make('site/blog/index', compact('posts'));
+    }
 
-	/**
-	 * View a blog post.
-	 *
-	 * @param  string  $slug
-	 * @return View
-	 * @throws NotFoundHttpException
-	 */
-	public function getView($slug)
-	{
-		// Get this blog post data
-		$post = $this->post->where('slug', '=', $slug)->first();
+    /**
+     * View a blog post.
+     *
+     * @param  string  $slug
+     * @return View
+     * @throws NotFoundHttpException
+     */
+    public function getView($slug)
+    {
+        // Get this blog post data
+        $post = $this->post->where('slug', '=', $slug);
 
-		// Check if the blog post exists
-		if (is_null($post))
-		{
-			// If we ended up in here, it means that
-			// a page or a blog post didn't exist.
-			// So, this means that it is time for
-			// 404 error page.
-			return App::abort(404);
-		}
+        // Check if the blog post exists
+        if (is_null($post))
+        {
+            // If we ended up in here, it means that
+            // a page or a blog post didn't exist.
+            // So, this means that it is time for
+            // 404 error page.
+            return App::abort(404);
+        }
 
-		// Show the page
-		return View::make('site/blog/view_post', compact('post'));
-	}
+        // Show the page
+        return View::make('site/blog/view_post', compact('post'));
+    }
 
 }

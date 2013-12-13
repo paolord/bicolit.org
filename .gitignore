@@ -10,7 +10,7 @@
 
 # Basset development collections
 /public/assets/compiled
-
+/public/packages
 
 # Composer
 composer.phar

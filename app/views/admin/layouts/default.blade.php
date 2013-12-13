@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>@yield('meta_title', Config::get('app.default_title'))</title>
+        <title>@yield('meta_title', Config::get('app.default_title'))</title>
         <meta name="keywords" content="@yield('meta_keywords', Config::get('app.default_keywords'))" />
         <meta name="author" content="@yield('meta_author', Config::get('app.default_author'))" />
         <!-- Google will often use this as its description of your page/site. Make it good. -->
@@ -95,7 +95,7 @@
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <span class="glyphicon glyphicon-user"></span> {{{ Auth::user()->username }}}	<span class="caret"></span>
+                                <span class="glyphicon glyphicon-user"></span> {{{ Auth::user()->username }}} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-file"></span> Settings</a></li>
@@ -109,17 +109,17 @@
         </div>
         <!-- ./ navbar -->
 
-		<!-- Container -->
-		<div class="container">
-			<!-- Notifications -->
-			@include('notifications')
-			<!-- ./ notifications -->
+        <!-- Container -->
+        <div class="container">
+            <!-- Notifications -->
+            @include('notifications')
+            <!-- ./ notifications -->
 
-			<!-- Content -->
-			@yield('content')
-			<!-- ./ content -->
-		</div>
-		<!-- ./ container -->        
+            <!-- Content -->
+            @yield('content')
+            <!-- ./ content -->
+        </div>
+        <!-- ./ container -->
 
         <!-- Footer -->
         <footer class="clearfix">

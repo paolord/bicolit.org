@@ -1,5 +1,7 @@
 <?php
 
+use App\Storage\Page\PageEloquentRepository as Page;
+
 class HomeController extends BaseController {
 
     /**
@@ -19,16 +21,16 @@ class HomeController extends BaseController {
         $this->page = $page;
     }
 
-	/**
-	 * View home.
-	 *
-	 * @return View
-	 */
-	public function getIndex()
-	{
-        $page = $this->page->where('slug', '=', 'home')->first();
+    /**
+     * View home.
+     *
+     * @return View
+     */
+    public function getIndex()
+    {
+        $page = $this->page->where('slug', '=', 'home');
 
-		// Show the page
-		return View::make('site/home/index', compact('page'));
-	}
+        // Show the page
+        return View::make('site/home/index', compact('page'));
+    }
 }

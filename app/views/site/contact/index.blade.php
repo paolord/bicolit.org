@@ -23,23 +23,23 @@
 {{-- Content --}}
 @section('content')
 <div class="row">
-	<div class="col-md-12">
-		<!-- Page Title -->
-		<div class="row">
-			<div class="col-md-12">
-				<h4><strong>{{ String::title($page->title) }}</strong></h4>
-			</div>
-		</div>
-		<!-- ./ page title -->
+    <div class="col-md-12">
+        <!-- Page Title -->
+        <div class="row">
+            <div class="col-md-12">
+                <h4><strong>{{ String::title($page->title) }}</strong></h4>
+            </div>
+        </div>
+        <!-- ./ page title -->
 
-		<!-- Page Content -->
-		<div class="row">
-			<div class="col-md-12">
-				<p>
-					{{ String::tidy($page->content) }}
-				</p>
-			</div>
-			<div class="col-md-8">
+        <!-- Page Content -->
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    {{ String::tidy($page->content) }}
+                </p>
+            </div>
+            <div class="col-md-8">
                 <form class="form-horizontal" method="POST" action="{{ URL::to('contact-us') }}" accept-charset="UTF-8">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <fieldset>
@@ -99,10 +99,10 @@
                         </div>
                     </fieldset>
                 </form>
-			</div>
-		</div>
-		<!-- ./ page content -->
-	</div>
+            </div>
+        </div>
+        <!-- ./ page content -->
+    </div>
 </div>
 
 <hr />

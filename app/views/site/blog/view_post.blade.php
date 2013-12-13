@@ -35,7 +35,7 @@
 <h3>{{ $post->title }}</h3>
 
 <div class="row">
-	<div class="col-md-11">
+    <div class="col-md-11">
         <p>
             <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
                 <a class="addthis_button_facebook"></a>
@@ -53,7 +53,7 @@
 <p>{{ $post->content }}</p>
 
 <div>
-	<span class="badge badge-info">Posted {{{ $post->date() }}}</span>
+    <span class="badge badge-info">Posted {{{ $post->date() }}}</span>
 </div>
 
 <hr />
@@ -62,9 +62,9 @@
 <h4><fb:comments-count href={{ $post->url() }}></fb:comments-count> Comments</h4>
 
 <div class="row">
-	<div class="col-md-11">          
+    <div class="col-md-11">
         <div class="fb-comments" data-href="{{ $post->url() }}" data-numposts="5" data-colorscheme="light"></div>
-	</div>
+    </div>
 </div>
 <hr />
 

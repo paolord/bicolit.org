@@ -1,5 +1,7 @@
 <?php
 
+use App\Storage\Page\PageEloquentRepository as Page;
+
 class AboutController extends BaseController {
 
     /**
@@ -19,16 +21,16 @@ class AboutController extends BaseController {
         $this->page = $page;
     }
 
-	/**
-	 * View home.
-	 *
-	 * @return View
-	 */
-	public function getIndex()
-	{
-        $page = $this->page->where('slug', '=', 'about')->first();
+    /**
+     * View home.
+     *
+     * @return View
+     */
+    public function getIndex()
+    {
+        $page = $this->page->where('slug', '=', 'about');
 
-		// Show the page
-		return View::make('site/about/index', compact('page'));
-	}
+        // Show the page
+        return View::make('site/about/index', compact('page'));
+    }
 }

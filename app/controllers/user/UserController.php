@@ -1,5 +1,7 @@
 <?php
 
+use App\Service\Validation\LaravelValidator;
+
 class UserController extends BaseController {
 
     /**
@@ -7,15 +9,17 @@ class UserController extends BaseController {
      * @var User
      */
     protected $user;
+    protected $validator;
 
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user)
+    public function __construct(User $user, LaravelValidator $validator)
     {
         parent::__construct();
         $this->user = $user;
+        $this->validator = $validator;
     }
 
     /**
@@ -39,9 +43,9 @@ class UserController extends BaseController {
     public function postEdit($user)
     {
         // Validate the inputs
-        $validator = Validator::make(Input::all(), $user->getUpdateRules());
+        $this->validator->make(Input::all(), $user->getUpdateRules());
 
-        if ($validator->passes())
+        if ($this->validator->passes())
         {
             $oldUser = clone $user;
             $user->username = Input::get( 'username' );

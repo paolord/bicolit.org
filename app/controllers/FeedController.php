@@ -1,21 +1,35 @@
 <?php
 
+use App\Storage\Post\PostEloquentRepository as Post;
+
 class FeedController extends BaseController {
 
-    public function __construct()
+    /**
+     * Post Model
+     * @var Post
+     */
+    protected $post;
+
+    /**
+     * Inject the models.
+     * @param Post $post
+     */
+    public function __construct(Post $post)
     {
         parent::__construct();
+
+        $this->post = $post;
     }
-    
-	/**
-	 * Feed.
-	 *
-	 * @return Feed
-	 */
-	public function getIndex()
-	{
-        // creating rss feed with our most recent 20 posts    
-        $posts = Post::orderBy('created_at', 'DESC')->take(20)->get();
+
+    /**
+     * Feed.
+     *
+     * @return Feed
+     */
+    public function getIndex()
+    {
+        // creating rss feed with our most recent 20 posts
+        $posts = $this->post->orderBy('created_at', 'DESC')->take(20)->get();
 
         $feed = Feed::make();
 

@@ -2,16 +2,16 @@
 
 return array(
 
-	'already_exists'    => 'Usuário já existe!',
-	'does_not_exist'    => 'Usuário não existe.',
-	'login_required'    => 'O campo login é requerido.',
-	'password_required' => 'A senha é requerida.',
-	'password_does_not_match' => 'As senhas fornecidas não correspondem.',
+    'already_exists'    => 'Usuário já existe!',
+    'does_not_exist'    => 'Usuário não existe.',
+    'login_required'    => 'O campo login é requerido.',
+    'password_required' => 'A senha é requerida.',
+    'password_does_not_match' => 'As senhas fornecidas não correspondem.',
 
-	'create' => array(
-		'error'   => 'Usuário não foi criado, por favor, tente novamente.',
-		'success' => 'Usuário criado com sucesso.'
-	),
+    'create' => array(
+        'error'   => 'Usuário não foi criado, por favor, tente novamente.',
+        'success' => 'Usuário criado com sucesso.'
+    ),
 
     'edit' => array(
         'impossible' => 'Você não pode se editar.',

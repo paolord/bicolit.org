@@ -1,5 +1,7 @@
 <?php
 
+use App\Storage\Page\PageEloquentRepository as Page;
+
 class AdminPagesController extends AdminController {
 
 
@@ -42,10 +44,10 @@ class AdminPagesController extends AdminController {
      * @param $page
      * @return Response
      */
-	public function getShow($page)
-	{
+    public function getShow($page)
+    {
         // redirect to the frontend
-	}
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -53,14 +55,14 @@ class AdminPagesController extends AdminController {
      * @param $page
      * @return Response
      */
-	public function getEdit($page)
-	{
+    public function getEdit($page)
+    {
         // Title
         $title = Lang::get('admin/pages/title.page_update');
 
         // Show the page
         return View::make('admin/pages/create_edit', compact('page', 'title'));
-	}
+    }
 
     /**
      * Update the specified resource in storage.
@@ -68,24 +70,19 @@ class AdminPagesController extends AdminController {
      * @param $page
      * @return Response
      */
-	public function postEdit($page)
-	{
-        // Update the page  data
-        $page->title            = Input::get('title');
-        $page->content          = Input::get('content');
-        $page->meta_title       = Input::get('meta-title');
-        $page->meta_description = Input::get('meta-description');
-        $page->meta_keywords    = Input::get('meta-keywords');
+    public function postEdit($page)
+    {
+        $page = $this->page->update($page->id, Input::all());
 
         // Was the page post updated?
-        if($page->save())
+        if($page->result)
         {
             // Redirect to the new page page
             return Redirect::to('admin/pages/' . $page->id . '/edit')->with('success', Lang::get('admin/pages/messages.update.success'));
         }
 
-        return Redirect::to('admin/pages/' . $page->id . '/edit')->with('error', Lang::get('admin/pages/messages.update.error'))->withInput()->withErrors($page->errors());
-	}
+        return Redirect::to('admin/pages/' . $page->id . '/edit')->with('error', Lang::get('admin/pages/messages.update.error'))->withInput()->withErrors($page->errors);
+    }
 
     /**
      * Show a list of all the pages formatted for Datatables.
@@ -94,7 +91,7 @@ class AdminPagesController extends AdminController {
      */
     public function getData()
     {
-        $pages = Page::select(array('pages.id', 'pages.title', 'pages.created_at'));
+        $pages = $this->page->select(array('pages.id', 'pages.title', 'pages.created_at'));
 
         return Datatables::of($pages)
 

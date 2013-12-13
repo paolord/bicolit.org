@@ -1,23 +1,46 @@
 <?php
 
+use App\Storage\Post\PostEloquentRepository as Post;
+use App\Storage\Page\PageEloquentRepository as Page;
+
 class SitemapController extends BaseController {
 
-    public function __construct()
+    /**
+     * Post Model
+     * @var Post
+     */
+    protected $post;
+
+    /**
+     * Page Model
+     * @var Page
+     */
+    protected $page;
+
+    /**
+     * Inject the models.
+     * @param Post $post
+     * @param Page $page
+     */
+    public function __construct(Post $post, Page $page)
     {
         parent::__construct();
+
+        $this->post = $post;
+        $this->page = $page;
     }
-    
-	/**
-	 * Sitemap.
-	 *
-	 * @return Sitemap
-	 */
-	public function getIndex()
-	{
+
+    /**
+     * Sitemap.
+     *
+     * @return Sitemap
+     */
+    public function getIndex()
+    {
         //get posts
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $posts = $this->post->orderBy('created_at', 'DESC')->get();
         //get pages
-        $pages = Page::get();
+        $pages = $this->page->all();
 
         $sitemap = App::make("sitemap");
 
@@ -25,7 +48,7 @@ class SitemapController extends BaseController {
         {
             // set item's url, date, priority, freq
             if ($page->slug != 'home')
-            {            
+            {
                 $sitemap->add($page->url(), $page->updated_at, 'monthly', 1);
             }
             else
@@ -42,5 +65,5 @@ class SitemapController extends BaseController {
 
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
         return $sitemap->render('xml');
-	}
+    }
 }

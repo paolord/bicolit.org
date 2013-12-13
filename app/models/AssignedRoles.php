@@ -12,5 +12,4 @@ class AssignedRoles extends Eloquent {
 
     public static $rules = array();
 
-
 }

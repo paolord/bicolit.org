@@ -1,5 +1,8 @@
 <?php
 
+use App\Storage\Post\PostEloquentRepository as Post;
+use App\Service\Validation\LaravelValidator;
+
 class AdminBlogsController extends AdminController {
 
 
@@ -8,15 +11,17 @@ class AdminBlogsController extends AdminController {
      * @var Post
      */
     protected $post;
+    protected $validator;
 
     /**
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Post $post)
+    public function __construct(Post $post, LaravelValidator $validator)
     {
         parent::__construct();
         $this->post = $post;
+        $this->validator = $validator;
     }
 
     /**
@@ -57,27 +62,16 @@ class AdminBlogsController extends AdminController {
 	 */
 	public function postCreate()
 	{
-
-        // Create a new blog post
-        $user = Auth::user();
-
-        // Update the blog post data
-        $this->post->title            = Input::get('title');
-        $this->post->slug             = Str::slug(Input::get('title'));
-        $this->post->content          = Input::get('content');
-        $this->post->meta_title       = Input::get('meta-title');
-        $this->post->meta_description = Input::get('meta-description');
-        $this->post->meta_keywords    = Input::get('meta-keywords');
-        $this->post->user_id          = $user->id;
+        $post = $this->post->create(Input::all());
 
         // Was the blog post created?
-        if($this->post->save())
+        if($post->result)
         {
             // Redirect to the new blog post page
-            return Redirect::to('admin/blogs/' . $this->post->id . '/edit')->with('success', Lang::get('admin/blogs/messages.create.success'));
+            return Redirect::to('admin/blogs/' . $post->id . '/edit')->with('success', Lang::get('admin/blogs/messages.create.success'));
         }
 
-        return Redirect::to('admin/blogs/create')->with('error', Lang::get('admin/blogs/messages.create.error'))->withInput()->withErrors($this->post->errors());
+        return Redirect::to('admin/blogs/create')->with('error', Lang::get('admin/blogs/messages.create.error'))->withInput()->withErrors($post->errors);
 	}
 
     /**
@@ -114,22 +108,16 @@ class AdminBlogsController extends AdminController {
      */
 	public function postEdit($post)
 	{
-        // Update the blog post data
-        $post->title            = Input::get('title');
-        $post->slug             = Str::slug(Input::get('title'));
-        $post->content          = Input::get('content');
-        $post->meta_title       = Input::get('meta-title');
-        $post->meta_description = Input::get('meta-description');
-        $post->meta_keywords    = Input::get('meta-keywords');
+        $post = $this->post->update($post->id, Input::all());
 
         // Was the blog post updated?
-        if($post->save())
+        if($post->result)
         {
             // Redirect to the new blog post page
             return Redirect::to('admin/blogs/' . $post->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
         }
 
-        return Redirect::to('admin/blogs/' . $post->id . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'))->withInput()->withErrors($post->errors());
+        return Redirect::to('admin/blogs/' . $post->id . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'))->withInput()->withErrors($post->errors);
 	}
 
 
@@ -162,21 +150,22 @@ class AdminBlogsController extends AdminController {
         );
 
         // Validate the inputs
-        $validator = Validator::make(Input::all(), $rules);
+        $this->validator->make(Input::all(), $rules);
 
         // Check if the form validates with success
-        if ($validator->passes())
+        if ($this->validator->passes())
         {
             $id = $post->id;
-            $post->delete();
+
+            $this->post->destroy($id);
 
             // Was the blog post deleted?
-            $post = Post::find($id);
-            if(empty($post))
-            {
+            //$post = $this->post->find($id);
+            //if(empty($post))
+            //{
                 // Redirect to the blog posts management page
-                return Redirect::to('admin/blogs')->with('success', Lang::get('admin/blogs/messages.delete.success'));
-            }
+            //    return Redirect::to('admin/blogs')->with('success', Lang::get('admin/blogs/messages.delete.success'));
+            //}
         }
         // There was a problem deleting the blog post
         return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/messages.delete.error'));
@@ -189,7 +178,7 @@ class AdminBlogsController extends AdminController {
      */
     public function getData()
     {
-        $posts = Post::select(array('posts.id', 'posts.title', 'posts.created_at'));
+        $posts = $this->post->select(array('posts.id', 'posts.title', 'posts.created_at'));
 
         return Datatables::of($posts)
 
