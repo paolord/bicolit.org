@@ -34,8 +34,8 @@ web1:
     - "rm -rf public/assets/compiled/*"
   after_deploy:
   #  - "php artisan cache:clear"
-    - "rm -f app/storage/cache/*"
-    - "rm -f app/storage/views/*"
+    - "rm -rf app/storage/cache/*"
+    - "rm -rf app/storage/views/*"
     - "php artisan basset:build -p public"
     - "php artisan basset:build -p admin"
 cache2:
