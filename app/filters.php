@@ -19,7 +19,11 @@ App::before(function($request)
 
 App::after(function($request, $response)
 {
-    //
+    $response->header('Strict-Transport-Security', 'max-age=16070400; includeSubDomains');
+    $response->header('X-Content-Type-Options', 'nosniff');
+    $response->header('X-XSS-Protection', '1; mode=block');
+    $response->header('X-Content-Security-Policy', "default-src 'self'; script-src 'self' cdnjs.cloudflare.com ajax.googleapis.com ajax.aspnetcdn.com");
+    return $response;
 });
 
 /*
